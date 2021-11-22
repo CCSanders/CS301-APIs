@@ -12,3 +12,12 @@ def index():
 @app.route('/count')
 def get_count():
   return str(client.db['CS301'].count_documents({}))
+
+@app.route('/hw_test')
+def hw_query_test():
+  array = {}
+  i = 0
+  for doc in client.db['CS301'].find({"founded_year": 1901}, {"name": 1, "permalink": 1, "_id": 0}):
+    array[i] = doc
+    i += 1
+  return array
