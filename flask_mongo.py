@@ -21,3 +21,8 @@ def hw_query_test():
     array[i] = doc
     i += 1
   return array
+
+@app.route('/example')
+def example():
+  doc = client.db['CS301'].find_one({"founded_year": 1999})
+  return str(doc['name'])
